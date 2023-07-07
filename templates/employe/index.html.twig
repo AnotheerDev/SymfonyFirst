@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+{% block body %}
+    <h1>liste des employés :</h1>
+
+    {% for employe in employes %}
+    {# Différentes facon de faire la premiere avec concaténation " ~ " / la deuxieme en ouvrant à chaque fois les " {{}} " et la troisième avec le __toString  #}
+    {# {{employe.raisonSociale ~ ' (' ~ employe.cp ~ ' ' ~ employe.ville ~ ')'}} <br> #}
+    {# {{ employe.raisonSociale }} ({{ employe.cp }} {{ employe.ville }}) <br> #}
+
+    <a href="{{ path('show_employe', {'id': employe.id}) }}">{{ employe }} </a> <br>
+{% endfor %}
+{% endblock %}

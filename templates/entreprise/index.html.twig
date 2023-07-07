@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EntrepriseController!{% endblock %}
+
+{% block body %}
+    <h1>liste des entreprises :</h1>
+
+    {% for entreprise in entreprises %}
+        {# Différentes facon de faire la premiere avec concaténation " ~ " / la deuxieme en ouvrant à chaque fois les " {{}} " et la troisième avec le __toString  #}
+        {# {{entreprise.raisonSociale ~ ' (' ~ entreprise.cp ~ ' ' ~ entreprise.ville ~ ')'}} <br> #}
+        {# {{ entreprise.raisonSociale }} ({{ entreprise.cp }} {{ entreprise.ville }}) <br> #}
+
+        {{ entreprise }} <br>
+    {% endfor %}
+
+
+
+
+{% endblock %}
