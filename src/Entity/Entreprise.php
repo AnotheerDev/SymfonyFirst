@@ -34,6 +34,9 @@ class Entreprise
     #[ORM\OneToMany(mappedBy: 'entreprise', targetEntity: Employe::class, orphanRemoval: true)]
     private Collection $employes;
 
+    #[ORM\Column(length: 50)]
+    private ?string $siret = null;
+
     public function __construct()
     {
         $this->employes = new ArrayCollection();
@@ -118,7 +121,6 @@ class Entreprise
             $this->employes->add($employe);
             $employe->setEntreprise($this);
         }
-
         return $this;
     }
 
@@ -130,12 +132,28 @@ class Entreprise
                 $employe->setEntreprise(null);
             }
         }
-
         return $this;
+    }
+
+    public function getFullAdresse()
+    {
+        return $this->adresse . " " . $this->cp . " " . $this->ville;
     }
 
     public function __toString()
     {
         return $this->raisonSociale . " (" . $this->cp . " " . $this->ville . ")";
+    }
+
+    public function getSiret(): ?string
+    {
+        return $this->siret;
+    }
+
+    public function setSiret(string $siret): static
+    {
+        $this->siret = $siret;
+
+        return $this;
     }
 }

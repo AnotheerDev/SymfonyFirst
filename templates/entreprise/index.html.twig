@@ -5,12 +5,15 @@
 {% block body %}
     <h1>liste des entreprises :</h1>
 
+    <a class="btn btn-primary" href="{{ path('add_entreprise') }}"> Ajouter une entreprise</a><br> 
+
     {% for entreprise in entreprises %}
         {# Différentes facon de faire la premiere avec concaténation " ~ " / la deuxieme en ouvrant à chaque fois les " {{}} " et la troisième avec le __toString  #}
         {# {{entreprise.raisonSociale ~ ' (' ~ entreprise.cp ~ ' ' ~ entreprise.ville ~ ')'}} <br> #}
         {# {{ entreprise.raisonSociale }} ({{ entreprise.cp }} {{ entreprise.ville }}) <br> #}
-
-        {{ entreprise }} <br>
+        <a href="{{ path('show_entreprise', {'id': entreprise.id}) }}">{{ entreprise }} </a> <br>
+        <a class="btn btn-warning" href="{{ path('edit_entreprise', {'id': entreprise.id}) }}">Edit</a>
+        <a class="btn btn-danger" href="{{ path('delete_entreprise', {'id': entreprise.id}) }}">Remove</a> <br>
     {% endfor %}
 
 

@@ -1,0 +1,13 @@
+body{
+    padding: 50px;
+}
+
+
+h1{
+    color: red;
+}
+
+.nomPrenom {
+    display: flex;
+    gap: 20px;
+}
